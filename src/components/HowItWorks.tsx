@@ -55,6 +55,7 @@ export default function HowItWorks() {
   return (
     <section
       ref={sectionRef}
+      className="hiw-section"
       style={{ paddingTop: 100, paddingBottom: 100 }}
     >
       <div
@@ -107,13 +108,10 @@ export default function HowItWorks() {
       </div>
 
       <style jsx>{`
-        .hiw-heading {
-          font-size: 40px;
-        }
+        .hiw-heading { font-size: 40px; }
         @media (max-width: 640px) {
-          .hiw-heading {
-            font-size: 28px;
-          }
+          .hiw-heading { font-size: 28px; }
+          .hiw-section { padding-top: 64px !important; padding-bottom: 64px !important; }
         }
       `}</style>
     </section>

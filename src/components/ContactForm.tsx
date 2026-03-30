@@ -96,6 +96,7 @@ export default function ContactForm() {
     <section
       id="contact"
       ref={sectionRef}
+      className="contact-section"
       style={{ paddingTop: 100, paddingBottom: 100, backgroundColor: "#fafaf9" }}
     >
       <div
@@ -157,6 +158,7 @@ export default function ContactForm() {
 
         {/* Card */}
         <div
+          className="contact-card"
           style={{
             backgroundColor: "#fff",
             border: "1px solid rgba(0,0,0,0.06)",
@@ -298,16 +300,12 @@ export default function ContactForm() {
       </div>
 
       <style>{`
-        .contact-heading {
-          font-size: 36px;
-        }
+        .contact-heading { font-size: 36px; }
         @media (max-width: 640px) {
-          .contact-heading {
-            font-size: 26px;
-          }
-          .contact-row {
-            flex-direction: column !important;
-          }
+          .contact-section { padding-top: 64px !important; padding-bottom: 64px !important; }
+          .contact-heading { font-size: 26px; }
+          .contact-card { padding: 24px !important; }
+          .contact-row { flex-direction: column !important; }
         }
       `}</style>
     </section>

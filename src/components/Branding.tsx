@@ -102,13 +102,10 @@ export default function Branding() {
       </div>
 
       <style jsx>{`
-        .branding-heading {
-          font-size: 40px;
-        }
+        .branding-heading { font-size: 40px; }
         @media (max-width: 640px) {
-          .branding-heading {
-            font-size: 28px;
-          }
+          .branding-heading { font-size: 28px; }
+          #about { padding-top: 64px !important; padding-bottom: 64px !important; }
         }
       `}</style>
     </section>

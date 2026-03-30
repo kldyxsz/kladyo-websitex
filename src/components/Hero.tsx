@@ -259,7 +259,7 @@ export default function Hero() {
           {/* Subtitle */}
           <p
             style={{
-              fontSize: "clamp(15px, 2vw, 19px)",
+              fontSize: "clamp(15px, 2.5vw, 19px)",
               fontWeight: 400,
               color: "#FFFFFF",
               letterSpacing: "0.01em",

@@ -24,7 +24,7 @@ export default function FinalCTA() {
   return (
     <section
       style={{ paddingTop: "120px", paddingBottom: "120px" }}
-      className="flex flex-col items-center px-6 overflow-hidden"
+      className="finalcta-section flex flex-col items-center px-6 overflow-hidden"
     >
       <div style={{ maxWidth: "800px", width: "100%", textAlign: "center" }}>
         {/* Large heading */}
@@ -43,6 +43,7 @@ export default function FinalCTA() {
 
         {/* Subheading */}
         <p
+          className="finalcta-sub"
           style={{
             fontSize: "24px",
             color: "#007AFF",
@@ -119,6 +120,13 @@ export default function FinalCTA() {
           aria-hidden="true"
         />
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .finalcta-section { padding-top: 72px !important; padding-bottom: 72px !important; }
+          .finalcta-sub { font-size: 18px !important; }
+        }
+      `}</style>
     </section>
   );
 }
