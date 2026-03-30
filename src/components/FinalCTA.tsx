@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React, { useRef } from "react";
 
 export default function FinalCTA() {
@@ -95,31 +94,6 @@ export default function FinalCTA() {
         </div>
       </div>
 
-      {/* Gradient divider */}
-      <div
-        style={{
-          marginTop: "80px",
-          width: "100vw",
-          position: "relative",
-          left: "50%",
-          right: "50%",
-          marginLeft: "-50vw",
-          marginRight: "-50vw",
-        }}
-      >
-        <Image
-          src="/portal-assets/gradient-divider.webp"
-          alt=""
-          width={2000}
-          height={276}
-          style={{
-            width: "100%",
-            height: "auto",
-            display: "block",
-          }}
-          aria-hidden="true"
-        />
-      </div>
 
       <style>{`
         @media (max-width: 640px) {
