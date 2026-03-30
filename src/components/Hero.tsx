@@ -208,7 +208,7 @@ export default function Hero() {
           alignItems: "center",
           width: "100%",
           maxWidth: 860,
-          paddingTop: "120px",
+          paddingTop: "clamp(40px, 10vh, 120px)",
           paddingBottom: "160px",
           paddingLeft: 24,
           paddingRight: 24,
