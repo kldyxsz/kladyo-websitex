@@ -56,7 +56,7 @@ export default function HowItWorks() {
     <section
       ref={sectionRef}
       className="hiw-section"
-      style={{ paddingTop: 100, paddingBottom: 100 }}
+      style={{ paddingTop: 100, paddingBottom: 100, backgroundColor: "#F7F7F7" }}
     >
       <div
         style={{

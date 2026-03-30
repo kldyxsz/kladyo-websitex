@@ -23,7 +23,7 @@ export default function FinalCTA() {
 
   return (
     <section
-      style={{ paddingTop: "120px", paddingBottom: "120px" }}
+      style={{ paddingTop: "120px", paddingBottom: "120px", backgroundColor: "#F7F7F7" }}
       className="finalcta-section flex flex-col items-center px-6 overflow-hidden"
     >
       <div style={{ maxWidth: "800px", width: "100%", textAlign: "center" }}>
