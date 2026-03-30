@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Send, CheckCircle2, Mail, MapPin } from "lucide-react";
 
 const schema = z.object({
   name: z.string().min(2, "Full name must be at least 2 characters"),
@@ -18,7 +17,37 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  padding: "12px 16px",
+  fontSize: 15,
+  color: "#000",
+  backgroundColor: "#fff",
+  border: "1px solid rgba(0,0,0,0.12)",
+  borderRadius: 12,
+  outline: "none",
+  boxSizing: "border-box",
+  transition: "border-color 0.2s ease",
+  fontFamily: "inherit",
+};
+
+const labelStyle: React.CSSProperties = {
+  display: "block",
+  fontSize: 13,
+  fontWeight: 500,
+  color: "rgba(0,0,0,0.6)",
+  marginBottom: 6,
+};
+
+const errorStyle: React.CSSProperties = {
+  fontSize: 12,
+  color: "#E53935",
+  marginTop: 4,
+};
+
 export default function ContactForm() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -30,6 +59,20 @@ export default function ContactForm() {
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const onSubmit = async (data: FormData) => {
     setLoading(true);
     setServerError(null);
@@ -39,190 +82,234 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      if (!res.ok) throw new Error("server_error");
+      if (!res.ok) throw new Error();
       setSubmitted(true);
       reset();
     } catch {
-      setServerError("Submission failed. Please try again or email us at info@kladyo.com.");
+      setServerError("Something went wrong. Please try again or email us at info@kladyo.com.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section id="contact" className="relative py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-[#09090B]" />
-      <div className="absolute inset-0 bg-grid opacity-20" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FF9900]/[0.03] rounded-full blur-[150px] pointer-events-none" />
+    <section
+      id="contact"
+      ref={sectionRef}
+      style={{ paddingTop: 100, paddingBottom: 100, backgroundColor: "#fafaf9" }}
+    >
+      <div
+        style={{
+          maxWidth: 680,
+          marginLeft: "auto",
+          marginRight: "auto",
+          paddingLeft: 24,
+          paddingRight: 24,
+        }}
+      >
+        {/* Heading */}
+        <p
+          style={{
+            fontSize: 12,
+            fontWeight: 600,
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            color: "rgba(0,0,0,0.4)",
+            textAlign: "center",
+            marginBottom: 12,
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(16px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+        >
+          Get in Touch
+        </p>
+        <h2
+          className="contact-heading"
+          style={{
+            fontWeight: 700,
+            color: "#000",
+            textAlign: "center",
+            letterSpacing: "-0.02em",
+            margin: "0 0 12px",
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease 0.05s, transform 0.5s ease 0.05s",
+          }}
+        >
+          Let&apos;s build something great
+        </h2>
+        <p
+          style={{
+            fontSize: 16,
+            color: "rgba(0,0,0,0.55)",
+            textAlign: "center",
+            marginBottom: 48,
+            lineHeight: 1.6,
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(16px)",
+            transition: "opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s",
+          }}
+        >
+          Your first consultation is free. Tell us about your project and we&apos;ll
+          get back to you within 24 hours.
+        </p>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 tag tag-orange mb-4">
-            <span className="w-1.5 h-1.5 bg-[#FF9900] rounded-full" />
-            Contact Us
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">
-            Let&apos;s Build Together
-          </h2>
-          <p className="text-zinc-400 text-base sm:text-lg max-w-xl mx-auto">
-            Your first consultation is free. Tell us about your project and we&apos;ll
-            get back to you within 24 hours.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-          {/* Left - Contact info */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="glass-card rounded-2xl p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-[#FF9900]/10 rounded-xl flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5 text-[#FF9900]" />
-                </div>
-                <div>
-                  <p className="text-white font-semibold text-sm mb-1">Email Us</p>
-                  <a
-                    href="mailto:info@kladyo.com"
-                    className="text-zinc-400 text-sm hover:text-[#FF9900] transition-colors"
-                  >
-                    info@kladyo.com
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="glass-card rounded-2xl p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-[#FF9900]/10 rounded-xl flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 text-[#FF9900]" />
-                </div>
-                <div>
-                  <p className="text-white font-semibold text-sm mb-1">Headquarters</p>
-                  <p className="text-zinc-400 text-sm">Istanbul, Turkey</p>
-                  <p className="text-zinc-500 text-xs mt-1">Serving clients globally</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="glass-card rounded-2xl p-6">
-              <p className="text-zinc-400 text-sm leading-relaxed">
-                We respond to every inquiry within 24 hours. Whether you need a
-                quick assessment or a full cloud strategy, we&apos;re here to help
-                you take the next step.
-              </p>
-            </div>
-          </div>
-
-          {/* Right - Form */}
-          <div className="lg:col-span-3">
-            {submitted ? (
-              <div className="flex flex-col items-center justify-center text-center p-12 glass-strong rounded-2xl border-[#FF9900]/10">
-                <CheckCircle2 className="w-14 h-14 text-[#FF9900] mb-4" />
-                <h3 className="text-white font-bold text-xl mb-2">
-                  Message Sent Successfully
-                </h3>
-                <p className="text-zinc-400 text-sm max-w-xs">
-                  Our team will review and respond within 24 hours.
-                </p>
-                <button
-                  onClick={() => setSubmitted(false)}
-                  className="mt-6 text-[#FF9900] text-sm hover:underline"
-                >
-                  Send another message
-                </button>
-              </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit(onSubmit)}
-                className="glass-strong rounded-2xl p-8 space-y-5"
+        {/* Card */}
+        <div
+          style={{
+            backgroundColor: "#fff",
+            border: "1px solid rgba(0,0,0,0.06)",
+            borderRadius: 20,
+            padding: "40px 40px",
+            boxShadow: "0 4px 24px rgba(0,0,0,0.04)",
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(24px)",
+            transition: "opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s",
+          }}
+        >
+          {submitted ? (
+            <div style={{ textAlign: "center", padding: "24px 0" }}>
+              <div
+                style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: "50%",
+                  backgroundColor: "rgba(0,0,0,0.04)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "0 auto 16px",
+                }}
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm text-zinc-300 mb-1.5 font-medium">
-                      Full Name <span className="text-[#FF9900]">*</span>
-                    </label>
-                    <input
-                      {...register("name")}
-                      type="text"
-                      placeholder="John Doe"
-                      className="w-full bg-white/[0.03] border border-white/10 focus:border-[#FF9900]/50 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm outline-none transition-colors"
-                    />
-                    {errors.name && (
-                      <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block text-sm text-zinc-300 mb-1.5 font-medium">
-                      Email <span className="text-[#FF9900]">*</span>
-                    </label>
-                    <input
-                      {...register("email")}
-                      type="email"
-                      placeholder="john@company.com"
-                      className="w-full bg-white/[0.03] border border-white/10 focus:border-[#FF9900]/50 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm outline-none transition-colors"
-                    />
-                    {errors.email && (
-                      <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm text-zinc-300 mb-1.5 font-medium">
-                    Company <span className="text-[#FF9900]">*</span>
-                  </label>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <p style={{ fontSize: 18, fontWeight: 700, color: "#000", marginBottom: 8 }}>
+                Message sent
+              </p>
+              <p style={{ fontSize: 14, color: "rgba(0,0,0,0.5)", marginBottom: 24, lineHeight: 1.6 }}>
+                We&apos;ll review your message and get back to you within 24 hours.
+              </p>
+              <button
+                onClick={() => setSubmitted(false)}
+                style={{
+                  fontSize: 14,
+                  color: "rgba(0,0,0,0.5)",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  textDecoration: "underline",
+                  fontFamily: "inherit",
+                }}
+              >
+                Send another message
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit(onSubmit)} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              {/* Name + Email */}
+              <div className="contact-row" style={{ display: "flex", gap: 16 }}>
+                <div style={{ flex: 1 }}>
+                  <label style={labelStyle}>Full Name</label>
                   <input
-                    {...register("company")}
+                    {...register("name")}
                     type="text"
-                    placeholder="Company Inc."
-                    className="w-full bg-white/[0.03] border border-white/10 focus:border-[#FF9900]/50 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm outline-none transition-colors"
+                    placeholder="John Doe"
+                    style={inputStyle}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(0,0,0,0.35)")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(0,0,0,0.12)")}
                   />
-                  {errors.company && (
-                    <p className="text-red-400 text-xs mt-1">{errors.company.message}</p>
-                  )}
+                  {errors.name && <p style={errorStyle}>{errors.name.message}</p>}
                 </div>
-
-                <div>
-                  <label className="block text-sm text-zinc-300 mb-1.5 font-medium">
-                    Message <span className="text-[#FF9900]">*</span>
-                  </label>
-                  <textarea
-                    {...register("message")}
-                    rows={4}
-                    placeholder="Tell us about your project or infrastructure needs..."
-                    className="w-full bg-white/[0.03] border border-white/10 focus:border-[#FF9900]/50 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm outline-none transition-colors resize-none"
+                <div style={{ flex: 1 }}>
+                  <label style={labelStyle}>Email</label>
+                  <input
+                    {...register("email")}
+                    type="email"
+                    placeholder="john@company.com"
+                    style={inputStyle}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(0,0,0,0.35)")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(0,0,0,0.12)")}
                   />
-                  {errors.message && (
-                    <p className="text-red-400 text-xs mt-1">{errors.message.message}</p>
-                  )}
+                  {errors.email && <p style={errorStyle}>{errors.email.message}</p>}
                 </div>
+              </div>
 
-                {serverError && (
-                  <div className="bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3">
-                    <p className="text-red-400 text-sm">{serverError}</p>
-                  </div>
-                )}
+              {/* Company */}
+              <div>
+                <label style={labelStyle}>Company</label>
+                <input
+                  {...register("company")}
+                  type="text"
+                  placeholder="Company Inc."
+                  style={inputStyle}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(0,0,0,0.35)")}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(0,0,0,0.12)")}
+                />
+                {errors.company && <p style={errorStyle}>{errors.company.message}</p>}
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full flex items-center justify-center gap-2 glass-btn-solid py-3.5 rounded-xl disabled:opacity-60"
-                >
-                  {loading ? (
-                    <span>Sending...</span>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      Send Message
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
-          </div>
+              {/* Message */}
+              <div>
+                <label style={labelStyle}>Message</label>
+                <textarea
+                  {...register("message")}
+                  rows={5}
+                  placeholder="Tell us about your project or infrastructure needs..."
+                  style={{ ...inputStyle, resize: "none" }}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(0,0,0,0.35)")}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(0,0,0,0.12)")}
+                />
+                {errors.message && <p style={errorStyle}>{errors.message.message}</p>}
+              </div>
+
+              {/* Server error */}
+              {serverError && (
+                <p style={{ fontSize: 13, color: "#E53935", margin: 0 }}>{serverError}</p>
+              )}
+
+              {/* Submit */}
+              <button
+                type="submit"
+                disabled={loading}
+                style={{
+                  width: "100%",
+                  padding: "14px",
+                  fontSize: 15,
+                  fontWeight: 600,
+                  color: "#fff",
+                  backgroundColor: loading ? "rgba(0,0,0,0.4)" : "#000",
+                  border: "none",
+                  borderRadius: 12,
+                  cursor: loading ? "not-allowed" : "pointer",
+                  transition: "background-color 0.2s ease, transform 0.2s ease",
+                  fontFamily: "inherit",
+                }}
+                onMouseEnter={(e) => { if (!loading) e.currentTarget.style.backgroundColor = "#1a1a1a"; }}
+                onMouseLeave={(e) => { if (!loading) e.currentTarget.style.backgroundColor = "#000"; }}
+              >
+                {loading ? "Sending…" : "Send Message"}
+              </button>
+            </form>
+          )}
         </div>
       </div>
+
+      <style>{`
+        .contact-heading {
+          font-size: 36px;
+        }
+        @media (max-width: 640px) {
+          .contact-heading {
+            font-size: 26px;
+          }
+          .contact-row {
+            flex-direction: column !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
