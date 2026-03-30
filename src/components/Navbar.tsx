@@ -25,9 +25,11 @@ export default function Navbar() {
         top: 0,
         left: 0,
         right: 0,
+        width: "100%",
         zIndex: 10,
         height: 64,
         background: "transparent",
+        boxSizing: "border-box",
       }}
     >
       <div
