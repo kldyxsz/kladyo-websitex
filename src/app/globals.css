@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@100..900&display=swap');
 
 @theme inline {
   --color-primary: #007AFF;
@@ -12,7 +13,8 @@
   --color-border: rgba(0, 0, 0, 0.15);
   --color-border-light: rgba(217, 217, 217, 0.6);
   --color-accent-purple: #5338;
-  --font-sans: var(--font-inter);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 }
 
 html {
@@ -26,7 +28,7 @@ body {
   width: 100%;
   background-color: #F7F7F7;
   color: #000000;
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 ::selection {
