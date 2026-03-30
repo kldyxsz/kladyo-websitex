@@ -20,7 +20,7 @@ export default function FounderMemo() {
 
   return (
     <section
-      style={{ paddingTop: "100px", paddingBottom: "100px" }}
+      style={{ paddingTop: "100px", paddingBottom: "100px", backgroundColor: "#F7F7F7" }}
       className="flex justify-center px-6"
     >
       <div
