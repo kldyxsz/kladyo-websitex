@@ -28,6 +28,9 @@ export default function Navbar() {
         zIndex: 10,
         height: 64,
         background: "transparent",
+        borderBottom: "none",
+        boxShadow: "none",
+        outline: "none",
       }}
     >
       <div
