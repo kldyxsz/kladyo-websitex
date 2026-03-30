@@ -176,6 +176,8 @@ export default function Hero() {
         alignItems: "center",
         justifyContent: "center",
         boxSizing: "border-box",
+        margin: 0,
+        padding: 0,
       }}
     >
       {/* Stars */}
