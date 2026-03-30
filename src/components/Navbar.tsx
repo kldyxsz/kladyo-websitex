@@ -21,16 +21,13 @@ export default function Navbar() {
   return (
     <header
       style={{
-        position: "fixed",
+        position: "absolute",
         top: 0,
         left: 0,
         right: 0,
-        width: "100%",
         zIndex: 10,
         height: 64,
-        paddingTop: "max(0px, env(safe-area-inset-top))",
         background: "transparent",
-        boxSizing: "border-box",
       }}
     >
       <div
