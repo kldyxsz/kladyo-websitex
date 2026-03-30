@@ -230,7 +230,7 @@ export default function Hero() {
           {/* Heading */}
           <h1
             style={{
-              fontSize: "clamp(40px, 6vw, 72px)",
+              fontSize: "clamp(28px, 6vw, 72px)",
               fontWeight: 800,
               color: "#FFFFFF",
               lineHeight: 1.08,
@@ -249,7 +249,6 @@ export default function Hero() {
               style={{
                 color: "#FFFFFF",
                 display: "inline",
-                whiteSpace: "nowrap",
               }}
             >
               Kladyo will handle the rest.
