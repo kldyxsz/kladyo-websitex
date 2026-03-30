@@ -166,6 +166,7 @@ export default function Hero() {
     <section
       style={{
         position: "relative",
+        width: "100%",
         minHeight: "70vh",
         background: "linear-gradient(180deg, #5371D6 0%, #8E8BBD 50%, #f9f8fc 100%)",
         overflow: "hidden",
@@ -173,6 +174,7 @@ export default function Hero() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        boxSizing: "border-box",
       }}
     >
       {/* Stars */}
