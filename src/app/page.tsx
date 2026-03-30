@@ -2,11 +2,11 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import BrandCarousel from "@/components/BrandCarousel";
 import Features from "@/components/Features";
-
 import Payments from "@/components/Payments";
 import Branding from "@/components/Branding";
 import HowItWorks from "@/components/HowItWorks";
 import FounderMemo from "@/components/FounderMemo";
+import ContactForm from "@/components/ContactForm";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
@@ -21,6 +21,7 @@ export default function Home() {
       <Branding />
       <HowItWorks />
       <FounderMemo />
+      <ContactForm />
       <FinalCTA />
       <Footer />
     </main>

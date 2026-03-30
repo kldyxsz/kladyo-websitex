@@ -1,23 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-
-const cloudIcons = [
-  { src: "/portal-assets/payment-icons-1.png", width: 145, height: 145 },
-  { src: "/portal-assets/payment-icons-2.png", width: 145, height: 145 },
-  { src: "/portal-assets/payment-icons-3.png", width: 145, height: 145 },
-  { src: "/portal-assets/payment-icons-4.png", width: 145, height: 145 },
-];
-
-const flags = [
-  { src: "/portal-assets/flag-1.png", width: 80, height: 58 },
-  { src: "/portal-assets/flag-2.png", width: 80, height: 58 },
-  { src: "/portal-assets/flag-3.png", width: 80, height: 58 },
-];
 
 const statusPills = [
   { dot: "bg-green-500", bar: "bg-green-500/20", label: "Provisioned" },

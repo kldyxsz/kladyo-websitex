@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import React, { useRef } from "react";
 
 export default function FinalCTA() {
-  const btnRef = useRef<HTMLButtonElement>(null);
+  const btnRef = useRef<HTMLAnchorElement>(null);
 
   const handleMouseEnter = () => {
     if (btnRef.current) {
@@ -23,7 +23,6 @@ export default function FinalCTA() {
 
   return (
     <section
-      id="contact"
       style={{ paddingTop: "120px", paddingBottom: "120px" }}
       className="flex flex-col items-center px-6 overflow-hidden"
     >
@@ -73,7 +72,8 @@ export default function FinalCTA() {
 
         {/* CTA Button */}
         <div style={{ marginTop: "32px" }}>
-          <button
+          <a
+            href="#contact"
             ref={btnRef}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -84,12 +84,13 @@ export default function FinalCTA() {
               fontSize: "15px",
               color: "#fff",
               backgroundColor: "#000",
-              border: "none",
+              textDecoration: "none",
+              display: "inline-block",
               transition: "transform 0.2s ease, box-shadow 0.2s ease",
             }}
           >
             Schedule a Call
-          </button>
+          </a>
         </div>
       </div>
 
