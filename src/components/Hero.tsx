@@ -164,6 +164,7 @@ export default function Hero() {
 
   return (
     <section
+      className="hero-section"
       style={{
         position: "relative",
         width: "100%",
@@ -317,6 +318,13 @@ export default function Hero() {
         </div>
       </div>
 
+      <style>{`
+        /* Extend hero background into iPhone safe areas in landscape */
+        .hero-section {
+          padding-left: env(safe-area-inset-left);
+          padding-right: env(safe-area-inset-right);
+        }
+      `}</style>
     </section>
   );
 }
