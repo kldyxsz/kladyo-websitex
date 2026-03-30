@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import ContactFormModal from "./ContactFormModal";
 
 interface Star {
   x: number;
@@ -150,6 +151,7 @@ const ROTATING_LINES = [
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
   const [active, setActive] = useState(0);
+  const [showContactModal, setShowContactModal] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -163,6 +165,7 @@ export default function Hero() {
   }, []);
 
   return (
+    <>
     <section
       className="hero-section"
       style={{
@@ -290,8 +293,8 @@ export default function Hero() {
             }}
           >
             {/* Primary CTA - Single Button */}
-            <a
-              href="#contact"
+            <button
+              onClick={() => setShowContactModal(true)}
               style={{
                 fontSize: 16,
                 fontWeight: 700,
@@ -304,6 +307,7 @@ export default function Hero() {
                 textDecoration: "none",
                 display: "inline-block",
                 transition: "all 0.3s ease",
+                cursor: "pointer",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
@@ -315,7 +319,7 @@ export default function Hero() {
               }}
             >
               Unlock Your Cloud Strategy
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -328,5 +332,7 @@ export default function Hero() {
         }
       `}</style>
     </section>
+    <ContactFormModal isOpen={showContactModal} onClose={() => setShowContactModal(false)} />
+    </>
   );
 }
