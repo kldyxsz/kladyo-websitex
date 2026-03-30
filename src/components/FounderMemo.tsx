@@ -27,6 +27,7 @@ export default function FounderMemo() {
         ref={cardRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        className="founder-card"
         style={{
           backgroundColor: "#fff",
           borderRadius: "16px",
@@ -146,6 +147,14 @@ export default function FounderMemo() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 640px) {
+          .founder-card {
+            padding: 28px !important;
+            transform: rotate(0deg) !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -228,6 +228,7 @@ export default function Features() {
             <div
               key={i}
               ref={setCardRef(i)}
+              className={`service-card${i < services.length - 1 ? " service-card-border" : ""}`}
               style={{
                 flex: "1 1 0",
                 minWidth: 200,
@@ -281,13 +282,16 @@ export default function Features() {
       </div>
 
       <style>{`
-        .features-heading {
-          font-size: 36px;
-        }
+        .features-heading { font-size: 36px; }
         @media (max-width: 640px) {
-          .features-heading {
-            font-size: 26px;
+          .features-heading { font-size: 26px; }
+          .service-card {
+            min-width: 100% !important;
+            border-right: none !important;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            padding: 20px 16px !important;
           }
+          .service-card:last-child { border-bottom: none; }
         }
         .service-chip:hover {
           background: rgba(90, 123, 240, 0.06) !important;

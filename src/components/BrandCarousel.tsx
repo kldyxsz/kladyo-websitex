@@ -48,6 +48,7 @@ export default function BrandCarousel() {
         >
           {/* Scrolling wrapper - adjusted gap and sizing for 4 visible logos */}
           <div
+            className="carousel-track"
             style={{
               display: "flex",
               gap: 90,
@@ -119,18 +120,14 @@ export default function BrandCarousel() {
 
       <style>{`
         @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
-
+        @media (max-width: 640px) {
+          .carousel-track { gap: 48px !important; }
+        }
         @media (prefers-reduced-motion: reduce) {
-          div[style*="animation: scroll"] {
-            animation: none !important;
-          }
+          .carousel-track { animation: none !important; }
         }
       `}</style>
     </section>
