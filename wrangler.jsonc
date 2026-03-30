@@ -1,0 +1,20 @@
+{
+  // Cloudflare Workers — Next.js via @opennextjs/cloudflare
+  "name": "klodya-com",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-01-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  // Environment variables — set real values with:
+  //   npx wrangler secret put RESEND_API_KEY
+  //   npx wrangler secret put RESEND_AUDIENCE_ID
+  "vars": {
+    "RESEND_FROM": "noreply@kladyo.com",
+    "RESEND_TO": "info@kladyo.com"
+  }
+}

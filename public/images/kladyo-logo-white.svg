@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" fill="none">
+  <!-- "kladyo" text -->
+  <text x="0" y="30" font-family="Inter, -apple-system, sans-serif" font-size="32" font-weight="600" fill="white" letter-spacing="-0.5">kladyo</text>
+  <!-- White cloud icon -->
+  <svg x="132" y="2" width="44" height="36" viewBox="0 0 24 24">
+    <path d="M19 18a4 4 0 0 0 .5-7.97A6 6 0 0 0 6 12a3.5 3.5 0 0 0 .5 6H19Z" fill="white" fill-opacity="0.9"/>
+  </svg>
+</svg>

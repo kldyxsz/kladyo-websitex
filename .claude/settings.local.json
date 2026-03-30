@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(kill %1)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(xargs kill:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:www.pexels.com)",
+      "WebSearch",
+      "Bash(mkdir -p /Users/burak/Documents/DEV/klodya-final-glass-13/.claude/skills)",
+      "Bash(cp -r /tmp/ai-website-cloner-template/.claude/skills/clone-website /Users/burak/Documents/DEV/klodya-final-glass-13/.claude/skills/)",
+      "WebFetch(domain:useportal.net)",
+      "Bash(curl -s -L 'https://useportal.net')",
+      "Bash(grep -oP '\\(rgb|rgba|#[0-9a-fA-F]{3,8}\\)\\\\\\([^\\)]*\\\\\\)|#[0-9a-fA-F]{3,8}')",
+      "Bash(grep -E '^#[0-9a-fA-F]{3,8}$')",
+      "Bash(lsof -ti:3000)",
+      "Bash(ls -la /Users/burak/Documents/DEV/klodya-final-glass-13/public/portal-assets/payment-icons-*.png /Users/burak/Documents/DEV/klodya-final-glass-13/public/portal-assets/flag-*.png /Users/burak/Documents/DEV/klodya-final-glass-13/public/portal-assets/klarna-logo.svg /Users/burak/Documents/DEV/klodya-final-glass-13/public/portal-assets/payment-card.png)",
+      "Bash(npm install:*)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(kill -9 17820)"
+    ]
+  }
+}
