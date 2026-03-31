@@ -105,7 +105,7 @@ export default function Features() {
       id="services"
       style={{
         paddingTop: 20,
-        paddingBottom: 80,
+        paddingBottom: 40,
         background: "linear-gradient(180deg, #f9f8fc 0%, #fafaf9 100%)",
       }}
     >

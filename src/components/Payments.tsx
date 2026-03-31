@@ -28,7 +28,7 @@ export default function Payments() {
   }, []);
 
   return (
-    <section className="w-full py-[100px]" style={{ backgroundColor: "#fafaf9" }}>
+    <section className="w-full py-[52px]" style={{ backgroundColor: "#fafaf9" }}>
       <div className="mx-auto w-full max-w-[1200px] px-6">
         <h2
           className="text-center font-bold text-black"
