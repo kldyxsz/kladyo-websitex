@@ -302,7 +302,7 @@ export default function Hero() {
                 background: "#8B1538",
                 padding: "16px 48px",
                 borderRadius: "12px",
-                border: "none",
+                border: "2px solid rgba(180, 60, 100, 0.55)",
                 boxShadow: "inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 6px 20px rgba(139, 21, 56, 0.25)",
                 textDecoration: "none",
                 display: "inline-block",

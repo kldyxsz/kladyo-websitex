@@ -18,7 +18,7 @@ export default function BrandCarousel() {
       style={{
         background: "linear-gradient(180deg, #f9f8fc 0%, #fafaf9 100%)",
         paddingTop: 0,
-        paddingBottom: 60,
+        paddingBottom: 36,
         paddingLeft: 24,
         paddingRight: 24,
         marginTop: -70,

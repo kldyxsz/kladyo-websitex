@@ -162,7 +162,7 @@ export default function Navbar() {
           background: "rgba(247,247,247,0.97)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
-          borderBottom: "1px solid rgba(0,0,0,0.08)",
+          borderBottom: mobileOpen ? "1px solid rgba(0,0,0,0.08)" : "none",
           overflow: "hidden",
           maxHeight: mobileOpen ? 320 : 0,
           transition: "max-height 0.28s ease",
