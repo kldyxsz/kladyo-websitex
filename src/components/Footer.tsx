@@ -8,8 +8,6 @@ const navLinks = [
   { label: "Blog", href: "#" },
   { label: "Careers", href: "#" },
   { label: "Contact", href: "#contact" },
-  { label: "Legal", href: "#" },
-  { label: "Privacy", href: "#" },
 ];
 
 export default function Footer() {
