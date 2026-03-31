@@ -28,7 +28,7 @@ export default function Branding() {
     <section
       id="about"
       ref={sectionRef}
-      style={{ paddingTop: 36, paddingBottom: 36, backgroundColor: "#fafaf9" }}
+      style={{ paddingTop: 48, paddingBottom: 48, backgroundColor: "#fafaf9" }}
     >
       <div
         style={{
