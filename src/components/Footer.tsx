@@ -6,58 +6,61 @@ import { useState } from "react";
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
-  { label: "Blog", href: "#", comingSoon: true },
-  { label: "Careers", href: "#" },
+  { label: "Blog", href: "#", comingSoon: "blog" },
+  { label: "Careers", href: "#", comingSoon: "careers" },
   { label: "Contact", href: "#contact" },
 ];
 
-export default function Footer() {
-  const [shaking, setShaking] = useState(false);
-  const [showToast, setShowToast] = useState(false);
+const toastMessages: Record<string, string> = {
+  blog: "✍️ Big ideas brewing — blog dropping soon!",
+  careers: "🚀 Think you've got what it takes? Drop your CV at info@kladyo.com — we dare you!",
+};
 
-  function handleBlogClick(e: React.MouseEvent) {
+export default function Footer() {
+  const [shaking, setShaking] = useState<string | null>(null);
+  const [toast, setToast] = useState<string | null>(null);
+
+  function handleSpecialLink(e: React.MouseEvent, key: string) {
     e.preventDefault();
     if (shaking) return;
-    setShaking(true);
-    setShowToast(true);
-    setTimeout(() => setShaking(false), 600);
-    setTimeout(() => setShowToast(false), 3000);
+    setShaking(key);
+    setToast(key);
+    setTimeout(() => setShaking(null), 600);
+    setTimeout(() => setToast(null), 4000);
   }
 
   return (
     <footer style={{ backgroundColor: "#F7F7F7", position: "relative" }}>
-      {/* Toast */}
+      {/* Glass Toast */}
       <div
         style={{
           position: "fixed",
-          bottom: 32,
+          bottom: 40,
           left: "50%",
-          transform: showToast ? "translateX(-50%) translateY(0)" : "translateX(-50%) translateY(20px)",
-          opacity: showToast ? 1 : 0,
-          transition: "opacity 0.3s ease, transform 0.3s ease",
+          transform: toast ? "translateX(-50%) translateY(0) scale(1)" : "translateX(-50%) translateY(16px) scale(0.97)",
+          opacity: toast ? 1 : 0,
+          transition: "opacity 0.35s cubic-bezier(0.34,1.56,0.64,1), transform 0.35s cubic-bezier(0.34,1.56,0.64,1)",
           pointerEvents: "none",
           zIndex: 9999,
-          background: "#fff",
-          border: "1px solid rgba(0,0,0,0.08)",
-          borderRadius: "12px",
-          padding: "12px 20px",
-          boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
+          background: "rgba(255,255,255,0.55)",
+          backdropFilter: "blur(24px) saturate(180%)",
+          WebkitBackdropFilter: "blur(24px) saturate(180%)",
+          border: "1px solid rgba(255,255,255,0.7)",
+          borderRadius: "18px",
+          padding: "14px 22px",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.8) inset",
           fontSize: "14px",
-          color: "#000",
-          whiteSpace: "nowrap",
+          fontWeight: 500,
+          color: "rgba(0,0,0,0.8)",
+          maxWidth: "calc(100vw - 48px)",
+          textAlign: "center",
         }}
       >
-        ✍️ We&apos;re thrilled to share our insights — blog coming soon!
+        {toast ? toastMessages[toast] : ""}
       </div>
 
       {/* Section divider line */}
-      <div
-        style={{
-          height: "1px",
-          backgroundColor: "rgba(0,0,0,0.08)",
-          width: "100%",
-        }}
-      />
+      <div style={{ height: "1px", backgroundColor: "rgba(0,0,0,0.08)", width: "100%" }} />
 
       <div
         style={{
@@ -82,11 +85,7 @@ export default function Footer() {
               alt="Kladyo"
               width={140}
               height={36}
-              style={{
-                height: 28,
-                width: "auto",
-                filter: "invert(1)",
-              }}
+              style={{ height: 28, width: "auto", filter: "invert(1)" }}
             />
           </a>
 
@@ -100,21 +99,17 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    onClick={link.comingSoon ? handleBlogClick : undefined}
+                    onClick={link.comingSoon ? (e) => handleSpecialLink(e, link.comingSoon!) : undefined}
                     style={{
                       fontSize: "14px",
                       color: "rgba(0,0,0,0.5)",
                       textDecoration: "none",
                       transition: "color 0.2s ease",
                       display: "inline-block",
-                      animation: link.comingSoon && shaking ? "footerShake 0.6s ease" : "none",
+                      animation: shaking === link.comingSoon ? "footerShake 0.6s ease" : "none",
                     }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = "#000";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = "rgba(0,0,0,0.5)";
-                    }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#000"; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(0,0,0,0.5)"; }}
                   >
                     {link.label}
                   </a>
