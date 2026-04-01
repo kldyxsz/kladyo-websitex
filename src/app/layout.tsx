@@ -16,13 +16,8 @@ export const metadata: Metadata = {
     "cloud solutions, AI infrastructure, DevOps, cloud migration, cost optimization, managed services, Kladyo",
   authors: [{ name: "Kladyo" }],
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    apple: [
-      {
-        url: "/favicon.svg",
-        type: "image/svg+xml",
-      },
-    ],
+    icon: [{ url: "/kladyoicon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/kladyoicon.svg", type: "image/svg+xml" }],
   },
   openGraph: {
     title: "Kladyo | Cloud & AI Infrastructure for the Future",
