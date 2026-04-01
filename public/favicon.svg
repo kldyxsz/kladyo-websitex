@@ -1,19 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Kladyo">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#5371D6"/>
-      <stop offset="100%" stop-color="#8E8BBD"/>
-    </linearGradient>
-  </defs>
-  <rect width="32" height="32" rx="8" fill="url(#bg)"/>
-  <text
-    x="16"
-    y="23"
-    font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
-    font-size="20"
-    font-weight="700"
-    fill="white"
-    text-anchor="middle"
-    letter-spacing="-1"
-  >K</text>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="1024.0px" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 1024 1024" width="1024.0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<linearGradient gradientTransform="matrix(0 0 0 0 0 0)" gradientUnits="userSpaceOnUse" id="LinearGradient" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0" stop-color="#ffbc58"/>
+<stop offset="1" stop-color="#000000"/>
+</linearGradient>
+</defs>
+<clipPath id="ArtboardFrame">
+<rect height="1024" width="1024" x="0" y="0"/>
+</clipPath>
+<g clip-path="url(#ArtboardFrame)" id="Layer-1">
+<path d="M-176.066-182.03L658.575-182.03L658.575 652.611L-176.066 652.611L-176.066-182.03Z" fill="url(#LinearGradient)" fill-rule="nonzero" opacity="1" stroke="#e0f7fd" stroke-linecap="butt" stroke-linejoin="round" stroke-width="1155.53"/>
+<path d="M260.69-31.4418C260.656-26.498 260.622-21.5767 260.588-16.6778M248 46.2587C245.04 507.448 246.598 816.126 247.42 943.863M722.84 887.763L662.312 842.257L604.935 799.12M538.001 749.506L257.308 538.476L752.12 108.388M913.852-32.1877L947-61" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="141.769"/>
+</g>
 </svg>
