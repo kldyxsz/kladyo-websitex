@@ -1,18 +1,55 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
-  { label: "Blog", href: "#" },
+  { label: "Blog", href: "#", comingSoon: true },
   { label: "Careers", href: "#" },
   { label: "Contact", href: "#contact" },
 ];
 
 export default function Footer() {
+  const [shaking, setShaking] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  function handleBlogClick(e: React.MouseEvent) {
+    e.preventDefault();
+    if (shaking) return;
+    setShaking(true);
+    setShowToast(true);
+    setTimeout(() => setShaking(false), 600);
+    setTimeout(() => setShowToast(false), 3000);
+  }
+
   return (
-    <footer style={{ backgroundColor: "#F7F7F7" }}>
+    <footer style={{ backgroundColor: "#F7F7F7", position: "relative" }}>
+      {/* Toast */}
+      <div
+        style={{
+          position: "fixed",
+          bottom: 32,
+          left: "50%",
+          transform: showToast ? "translateX(-50%) translateY(0)" : "translateX(-50%) translateY(20px)",
+          opacity: showToast ? 1 : 0,
+          transition: "opacity 0.3s ease, transform 0.3s ease",
+          pointerEvents: "none",
+          zIndex: 9999,
+          background: "#fff",
+          border: "1px solid rgba(0,0,0,0.08)",
+          borderRadius: "12px",
+          padding: "12px 20px",
+          boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
+          fontSize: "14px",
+          color: "#000",
+          whiteSpace: "nowrap",
+        }}
+      >
+        ✍️ We&apos;re thrilled to share our insights — blog coming soon!
+      </div>
+
       {/* Section divider line */}
       <div
         style={{
@@ -63,19 +100,20 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    onClick={link.comingSoon ? handleBlogClick : undefined}
                     style={{
                       fontSize: "14px",
                       color: "rgba(0,0,0,0.5)",
                       textDecoration: "none",
                       transition: "color 0.2s ease",
+                      display: "inline-block",
+                      animation: link.comingSoon && shaking ? "footerShake 0.6s ease" : "none",
                     }}
                     onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.color =
-                        "#000";
+                      (e.currentTarget as HTMLAnchorElement).style.color = "#000";
                     }}
                     onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.color =
-                        "rgba(0,0,0,0.5)";
+                      (e.currentTarget as HTMLAnchorElement).style.color = "rgba(0,0,0,0.5)";
                     }}
                   >
                     {link.label}
@@ -91,26 +129,27 @@ export default function Footer() {
           className="flex flex-col items-center gap-2 md:flex-row md:justify-between md:items-center"
           style={{ marginTop: "24px" }}
         >
-          <p
-            style={{
-              fontSize: "13px",
-              color: "rgba(0,0,0,0.4)",
-              margin: 0,
-            }}
-          >
+          <p style={{ fontSize: "13px", color: "rgba(0,0,0,0.4)", margin: 0 }}>
             All rights reserved, 2025 Kladyo
           </p>
-          <p
-            style={{
-              fontSize: "13px",
-              color: "rgba(0,0,0,0.4)",
-              margin: 0,
-            }}
-          >
+          <p style={{ fontSize: "13px", color: "rgba(0,0,0,0.4)", margin: 0 }}>
             Building the future of cloud infrastructure.
           </p>
         </div>
       </div>
+
+      <style>{`
+        @keyframes footerShake {
+          0%   { transform: translateX(0); }
+          15%  { transform: translateX(-6px); }
+          30%  { transform: translateX(6px); }
+          45%  { transform: translateX(-5px); }
+          60%  { transform: translateX(5px); }
+          75%  { transform: translateX(-3px); }
+          90%  { transform: translateX(3px); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
     </footer>
   );
 }
