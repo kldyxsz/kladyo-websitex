@@ -116,21 +116,6 @@ export default function BrandCarousel() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes brandScroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .carousel-track {
-          animation: brandScroll 30s linear infinite;
-        }
-        @media (max-width: 640px) {
-          .carousel-track { gap: 48px !important; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .carousel-track { animation: none !important; }
-        }
-      `}</style>
     </section>
   );
 }
