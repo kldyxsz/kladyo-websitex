@@ -52,9 +52,7 @@ export default function BrandCarousel() {
             style={{
               display: "flex",
               gap: 90,
-              animation: "scroll 50s linear infinite",
               width: "fit-content",
-              animationPlayState: "running",
             }}
           >
             {/* First set of logos */}
@@ -119,9 +117,12 @@ export default function BrandCarousel() {
       </div>
 
       <style>{`
-        @keyframes scroll {
+        @keyframes brandScroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
+        }
+        .carousel-track {
+          animation: brandScroll 30s linear infinite;
         }
         @media (max-width: 640px) {
           .carousel-track { gap: 48px !important; }
