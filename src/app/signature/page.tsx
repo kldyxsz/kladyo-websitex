@@ -12,7 +12,7 @@ export default function Signature() {
           {/* Logo */}
           <div style={{ marginBottom: 16 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Kladyo.png" alt="Kladyo" height={24} style={{ display: "block" }} />
+            <img src="/Kladyo.png" alt="Kladyo" width={200} height={50} style={{ display: "block", width: 100, height: 25 }} />
           </div>
 
           {/* Divider */}
