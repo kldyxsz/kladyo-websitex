@@ -18,7 +18,7 @@ export default function Signature() {
           </div>
           <div style={{ marginTop: 14 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Kladyo.png" alt="Kladyo" height={28} style={{ display: "block" }} />
+            <img src="/images/kladyo-signature-logo.svg" alt="Kladyo" height={32} style={{ display: "block" }} />
           </div>
         </div>
       </body>
