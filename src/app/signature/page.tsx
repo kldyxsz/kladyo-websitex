@@ -2,7 +2,7 @@ export default function Signature() {
   return (
     <html>
       <head><meta charSet="UTF-8" /></head>
-      <body style={{ margin: 0, padding: 40, background: "#f0f0f0", fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
+      <body style={{ margin: 0, padding: 40, background: "#ffffff", fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
         <p style={{ fontSize: 12, color: "#999", marginBottom: 16 }}>
           👇 İmzayı seç, kopyala ve Gmail / Outlook&apos;a yapıştır
         </p>
