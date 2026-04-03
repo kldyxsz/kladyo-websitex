@@ -48,6 +48,7 @@ export default function Signature() {
             {/* Email */}
             <tr>
               <td style={{ fontSize: 12, paddingBottom: 4 }}>
+                ✉&nbsp;
                 <a href="mailto:siyar@kladyo.com" style={{ color: "#444", textDecoration: "none" }}>
                   siyar@kladyo.com
                 </a>
@@ -57,6 +58,7 @@ export default function Signature() {
             {/* Website */}
             <tr>
               <td style={{ fontSize: 12 }}>
+                🌐&nbsp;
                 <a href="https://kladyo.com" style={{ color: "#5371D6", textDecoration: "none" }}>
                   kladyo.com
                 </a>
