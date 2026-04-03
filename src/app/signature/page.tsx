@@ -4,40 +4,67 @@ export default function Signature() {
       <head><meta charSet="UTF-8" /></head>
       <body style={{ margin: 0, padding: 40, background: "#f0f0f0", fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
         <p style={{ fontSize: 12, color: "#999", marginBottom: 16 }}>
-          👇 İmzayı seç, kopyala ve Gmail&apos;e yapıştır
+          👇 İmzayı seç, kopyala ve Gmail / Outlook&apos;a yapıştır
         </p>
 
-        <div style={{ display: "inline-block", background: "#ffffff", padding: "24px 28px", borderRadius: 16, boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}>
+        {/* Signature — Outlook compatible, table-based */}
+        <table cellPadding={0} cellSpacing={0} border={0} style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif", borderCollapse: "collapse" }}>
+          <tbody>
+            {/* Logo */}
+            <tr>
+              <td style={{ paddingBottom: 12 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://kladyo.com/Kladyo.png" alt="Kladyo" width={100} height={25} style={{ display: "block", border: 0 }} />
+              </td>
+            </tr>
 
-          {/* Logo */}
-          <div style={{ marginBottom: 16 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Kladyo.png" alt="Kladyo" width={200} height={50} style={{ display: "block", width: 100, height: 25 }} />
-          </div>
+            {/* Divider */}
+            <tr>
+              <td style={{ paddingBottom: 14 }}>
+                <table cellPadding={0} cellSpacing={0} border={0} style={{ width: "100%" }}>
+                  <tbody>
+                    <tr>
+                      <td style={{ backgroundColor: "#5371D6", height: 2, fontSize: 0, lineHeight: 0 }}>&nbsp;</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
 
-          {/* Divider */}
-          <div style={{ width: "100%", height: 1, background: "linear-gradient(90deg,#5371D6,#8E8BBD,transparent)", marginBottom: 16 }} />
+            {/* Name */}
+            <tr>
+              <td style={{ fontSize: 15, fontWeight: 700, color: "#0a0a0a", paddingBottom: 3 }}>
+                Şiyar Tekdemir
+              </td>
+            </tr>
 
-          {/* Name & Title */}
-          <div style={{ fontSize: 16, fontWeight: 700, color: "#0a0a0a", letterSpacing: "-0.3px" }}>Şiyar Tekdemir</div>
-          <div style={{ fontSize: 11, fontWeight: 600, color: "#5371D6", textTransform: "uppercase" as const, letterSpacing: "1px", marginTop: 3 }}>
-            Founder &amp; CEO
-          </div>
+            {/* Title */}
+            <tr>
+              <td style={{ fontSize: 11, fontWeight: 600, color: "#5371D6", textTransform: "uppercase" as const, letterSpacing: 1, paddingBottom: 12 }}>
+                Founder &amp; CEO · Kladyo
+              </td>
+            </tr>
 
-          {/* Divider */}
-          <div style={{ width: 32, height: 2, background: "#5371D6", borderRadius: 2, margin: "12px 0", opacity: 0.3 }} />
+            {/* Email */}
+            <tr>
+              <td style={{ fontSize: 12, paddingBottom: 4 }}>
+                <a href="mailto:siyar@kladyo.com" style={{ color: "#444", textDecoration: "none" }}>
+                  siyar@kladyo.com
+                </a>
+              </td>
+            </tr>
 
-          {/* Contact */}
-          <div style={{ fontSize: 12, color: "#666", lineHeight: 1.8 }}>
-            <a href="mailto:siyar@kladyo.com" style={{ color: "#444", textDecoration: "none", display: "block" }}>
-              ✉ siyar@kladyo.com
-            </a>
-            <a href="https://kladyo.com" style={{ color: "#444", textDecoration: "none", display: "block" }}>
-              🌐 kladyo.com
-            </a>
-          </div>
+            {/* Website */}
+            <tr>
+              <td style={{ fontSize: 12 }}>
+                <a href="https://kladyo.com" style={{ color: "#5371D6", textDecoration: "none" }}>
+                  kladyo.com
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-        </div>
       </body>
     </html>
   );
